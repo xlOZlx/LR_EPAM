@@ -1,0 +1,11 @@
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\bin\Debug\nunit.framework.dll
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\bin\Debug\nunit.framework.pdb
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\bin\Debug\nunit.framework.xml
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csprojAssemblyReference.cache
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CopyComplete
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
+E:\3 курс\EPAM лабы\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -16,7 +17,7 @@ namespace SeleniumWebDriver
         [SetUp]
         public void StartBrowserAndGoToTheSite()
         {
-            webDriver = new ChromeDriver();
+            webDriver = new OpenQA.Selenium.IE.InternetExplorerDriver();
             webDriver.Manage().Window.Maximize();
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             webDriver.Navigate().GoToUrl("https://www.rentalcars.com/");
@@ -35,21 +36,31 @@ namespace SeleniumWebDriver
             listCountry.Click();
             IWebElement SelectCounry = webDriver.FindElement(By.XPath("//option[@value = 'Беларусь']"));
             SelectCounry.Click();
+            string country = SelectCounry.Text;
 
             IWebElement listCity = webDriver.FindElement(By.Id("pu-city"));
             listCity.Click();
             IWebElement SelectCity = webDriver.FindElement(By.XPath("//option[@value = 'Минск']"));
             SelectCity.Click();
+            string city = SelectCity.Text;
 
             IWebElement listLocation = webDriver.FindElement(By.Id("pu-location"));
             listLocation.Click();
             IWebElement selectLocation = webDriver.FindElement(By.XPath("//option[@value = '1202561']"));
             selectLocation.Click();
 
-            Thread.Sleep(1000);
+            TimeSpan.FromSeconds(3);
             IWebElement ButtonFind = webDriver.FindElement(By.Id("formsubmit"));
             ButtonFind.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(8000);
+
+            int match = 0;
+            if (webDriver.Url.Contains(country))
+                match++;
+            if (webDriver.Url.Contains("Минск"))
+                match++;
+
+            Assert.AreEqual(match, 2);
         }
 
         //[Test]
@@ -70,21 +81,21 @@ namespace SeleniumWebDriver
         //    IWebElement selectLocation = webDriver.FindElement(By.XPath("//option[@value = '1202561']"));
         //    selectLocation.Click();
 
-        //    //Thread.Sleep(5000);
+        //    //TimeSpan.FromSeconds(5);
         //    IWebElement ButtonFind = webDriver.FindElement(By.Id("formsubmit"));
         //    ButtonFind.Click();
-        //    Thread.Sleep(3000);
+        //    TimeSpan.FromSeconds(3);
 
 
         //    IWebElement listAuto = webDriver.FindElement(By.CssSelector("div.col-r.js-main-content div.carResultDiv"));
         //    IWebElement buttonReserve = listAuto.FindElement(By.CssSelector("table.carResultRow tbody tr.carResultRow_OfferInfo td.carResultRow_OfferInfo-toolbar a.carResultRow_OfferInfo-btn-primary"));
         //    buttonReserve.Click();
 
-        //    //Thread.Sleep(3500);
+        //    //TimeSpan.FromSeconds(4);
 
         //    webDriver.SwitchTo().Window(webDriver.WindowHandles.Last());
 
-        //    Thread.Sleep(3500);
+        //    TimeSpan.FromSeconds(4);
 
         //    IWebElement openMoreServices = webDriver.FindElement(By.Id("more_extras_link"));
         //    openMoreServices.Click();
@@ -96,12 +107,12 @@ namespace SeleniumWebDriver
         //    IWebElement Service2 = webDriver.FindElement(By.Name("add2"));
         //    Service2.Click();
 
-        //    Thread.Sleep(2500);
+        //    TimeSpan.FromSeconds(4);
 
         //    IWebElement ReserveWithoutFullProtection = webDriver.FindElement(By.Id("removePolicyButton")) ;
         //    ReserveWithoutFullProtection.Click();
 
-        //    Thread.Sleep(1500);
+        //    TimeSpan.FromSeconds(2);
 
         //    IWebElement listAppeal = webDriver.FindElement(By.Id("title"));
         //    listAppeal.Click();
@@ -116,11 +127,11 @@ namespace SeleniumWebDriver
         //    IWebElement phoneCustomer = webDriver.FindElement(By.Id("phone_input"));
         //    phoneCustomer.SendKeys("+375292233000");
 
-        //    Thread.Sleep(1500);
+        //    TimeSpan.FromSeconds(2);
 
         //    IWebElement reserveAfterFIO = webDriver.FindElement(By.Id("btn-submit-dd"));
         //    reserveAfterFIO.Click();
-        //    Thread.Sleep(1500);
+        //    TimeSpan.FromSeconds(2);
         //    Assert.AreEqual(webDriver.Url, "https://www.rentalcars.com/PaymentDetails.do");
         //}
     }

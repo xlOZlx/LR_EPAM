@@ -7,12 +7,17 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using Framework.Models;
 using log4net;
+using OpenQA.Selenium.Interactions;
 
 namespace Framework.PageObject
 {
     class MainPage
     {
         IWebDriver driver;
+        Actions actions;
+
+        [FindsBy(How = How.Id, Using = "js-closeCookieBanner")]
+        private IWebElement buttonOK;
 
         [FindsBy(How = How.Id, Using = "formsubmit")]
         private IWebElement buttonFind;
@@ -57,10 +62,13 @@ namespace Framework.PageObject
         {
             PageFactory.InitElements(driver, this);
             this.driver = driver;
+            actions = new Actions(this.driver);
         }
 
         public MainPage ClickButtonFind()
         {
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
+            actions.MoveToElement(buttonFind).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonFind)).Click();
             //buttonFind.Click();
             return this;
@@ -92,6 +100,7 @@ namespace Framework.PageObject
 
         public MainPage OpenCalenderReceivingDate()
         {
+            actions.MoveToElement(calendarReceivingDate).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReceivingDate)).Click();
             //calendarReceivingDate.Click();
             return this;
@@ -99,6 +108,7 @@ namespace Framework.PageObject
 
         public MainPage OpenCalenderReturnDate()
         {
+            actions.MoveToElement(calendarReturnDate).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReturnDate)).Click();
             //calendarReturnDate.Click();
             return this;
@@ -106,6 +116,7 @@ namespace Framework.PageObject
 
         public MainPage SelectReceivingAndReturnDate()
         {
+            actions.MoveToElement(choiseDate).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDate)).Click();
             //choiseDate.Click();
             return this;
@@ -119,6 +130,7 @@ namespace Framework.PageObject
 
         public MainPage SelectReturnDate()
         {
+            actions.MoveToElement(chooseReturnDate).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(chooseReturnDate)).Click();
             //chooseReturnDate.Click();
             return this;
@@ -126,6 +138,7 @@ namespace Framework.PageObject
 
         public MainPage EnableOrDisableCheckBoxAge()
         {
+            actions.MoveToElement(checkboxAge).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(checkboxAge)).Click();
             //checkboxAge.Click();
             return this;
@@ -149,7 +162,10 @@ namespace Framework.PageObject
 
         public MainPage ClickContactUs()
         {
-            linkContactUs.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
+            actions.MoveToElement(linkContactUs).Build().Perform();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(linkContactUs)).Click();
+            //linkContactUs.Click();
             return this;
         }
     }

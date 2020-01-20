@@ -7,12 +7,14 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using Framework.Models;
 using log4net;
+using OpenQA.Selenium.Interactions;
 
 namespace Framework.PageObject
 {
     class CarPage
     {
         IWebDriver driver;
+        Actions actions;
 
         [FindsBy(How = How.Id, Using = "more_extras_link")]
         private IWebElement openAdditionalServices;
@@ -54,10 +56,12 @@ namespace Framework.PageObject
         {
             PageFactory.InitElements(driver, this);
             this.driver = driver;
+            actions = new Actions(this.driver);
         }
         
         public CarPage OpenListAdditionalServices()
         {
+            actions.MoveToElement(openAdditionalServices).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(openAdditionalServices)).Click();
             //openAdditionalServices.Click();
             return this;
@@ -65,6 +69,7 @@ namespace Framework.PageObject
 
         public CarPage ClickButtonRemovePolicy()
         {
+            actions.MoveToElement(buttonRemovePolicy).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonRemovePolicy)).Click();
             //buttonRemovePolicy.Click();
             return this;
@@ -72,6 +77,7 @@ namespace Framework.PageObject
 
         public CarPage ClickButtonReserve()
         {
+            actions.MoveToElement(buttonReserve).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonReserve)).Click();
             //buttonReserve.Click();
             return this;

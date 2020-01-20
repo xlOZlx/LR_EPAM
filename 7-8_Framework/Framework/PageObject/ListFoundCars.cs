@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 
@@ -11,6 +12,7 @@ namespace Framework.PageObject
     class ListFoundCars
     {
         IWebDriver driver;
+        Actions actions;
 
         [FindsBy(How = How.CssSelector, Using = @"div.search-summary__section.search-summary__section--pick-up > div:nth-child(2) > div.search-summary__location")]
         public IWebElement correctInfo;
@@ -28,16 +30,19 @@ namespace Framework.PageObject
         {
             PageFactory.InitElements(driver, this);
             this.driver = driver;
+            actions = new Actions(this.driver);
         }
 
         public ListFoundCars AutoSelectProvider()
         {
+            actions.MoveToElement(selectProvider).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(selectProvider)).Click();
             //selectProvider.Click();
             return this;
         }
         public ListFoundCars ClickButtonReser()
         {
+            actions.MoveToElement(buttonReserve).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonReserve)).Click();
             //buttonReserve.Click();
             return this;

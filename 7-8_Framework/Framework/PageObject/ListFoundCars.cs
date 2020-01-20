@@ -32,12 +32,14 @@ namespace Framework.PageObject
 
         public ListFoundCars AutoSelectProvider()
         {
-            selectProvider.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(selectProvider)).Click();
+            //selectProvider.Click();
             return this;
         }
         public ListFoundCars ClickButtonReser()
         {
-            buttonReserve.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonReserve)).Click();
+            //buttonReserve.Click();
             return this;
         }
     }

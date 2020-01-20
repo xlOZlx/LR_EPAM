@@ -58,19 +58,22 @@ namespace Framework.PageObject
         
         public CarPage OpenListAdditionalServices()
         {
-            openAdditionalServices.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(openAdditionalServices)).Click();
+            //openAdditionalServices.Click();
             return this;
         }
 
         public CarPage ClickButtonRemovePolicy()
         {
-            buttonRemovePolicy.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonRemovePolicy)).Click();
+            //buttonRemovePolicy.Click();
             return this;
         }
 
         public CarPage ClickButtonReserve()
         {
-            buttonReserve.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonReserve)).Click();
+            //buttonReserve.Click();
             return this;
         }
 

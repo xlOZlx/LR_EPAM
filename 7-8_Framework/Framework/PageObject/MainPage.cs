@@ -61,7 +61,8 @@ namespace Framework.PageObject
 
         public MainPage ClickButtonFind()
         {
-            buttonFind.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonFind)).Click();
+            //buttonFind.Click();
             return this;
         }
 
@@ -91,19 +92,22 @@ namespace Framework.PageObject
 
         public MainPage OpenCalenderReceivingDate()
         {
-            calendarReceivingDate.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReceivingDate)).Click();
+            //calendarReceivingDate.Click();
             return this;
         }
 
         public MainPage OpenCalenderReturnDate()
         {
-            calendarReturnDate.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReturnDate)).Click();
+            //calendarReturnDate.Click();
             return this;
         }
 
         public MainPage SelectReceivingAndReturnDate()
         {
-            choiseDate.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDate)).Click();
+            //choiseDate.Click();
             return this;
         }
 
@@ -115,13 +119,15 @@ namespace Framework.PageObject
 
         public MainPage SelectReturnDate()
         {
-            chooseReturnDate.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(chooseReturnDate)).Click();
+            //chooseReturnDate.Click();
             return this;
         }
 
         public MainPage EnableOrDisableCheckBoxAge()
         {
-            checkboxAge.Click();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(checkboxAge)).Click();
+            //checkboxAge.Click();
             return this;
         }
 

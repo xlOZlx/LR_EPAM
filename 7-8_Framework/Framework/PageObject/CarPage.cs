@@ -85,6 +85,7 @@ namespace Framework.PageObject
 
         public CarPage SendkeysDataCustomer(string contact, string firstName, string surName, string email, string phone)
         {
+            actions.MoveToElement(PhoneCustomer).Build().Perform();
             new SelectElement(contacteCustomer).SelectByText(contact);
             FirstNameCustomer.SendKeys(firstName);
             SurNameCustomer.SendKeys(surName);

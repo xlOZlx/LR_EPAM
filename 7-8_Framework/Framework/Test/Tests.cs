@@ -125,7 +125,8 @@ namespace Framework.Test
                                                                            normalDataCreater.FirstName,
                                                                            normalDataCreater.SurName,
                                                                            normalDataCreater.MailAdress,
-                                                                           normalDataCreater.MobilePhone);
+                                                                           normalDataCreater.MobilePhone)
+                .ClickButtonReserve();
             CarPage carPageCorrectData = new CarPage(Driver);
             Assert.AreEqual(nameAddService, carPageCorrectData.ReturnCorrectAdditionalService());
         }

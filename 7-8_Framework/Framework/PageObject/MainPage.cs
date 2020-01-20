@@ -8,6 +8,7 @@ using OpenQA.Selenium.Support.UI;
 using Framework.Models;
 using log4net;
 using OpenQA.Selenium.Interactions;
+using System.Threading;
 
 namespace Framework.PageObject
 {
@@ -63,11 +64,12 @@ namespace Framework.PageObject
             PageFactory.InitElements(driver, this);
             this.driver = driver;
             actions = new Actions(this.driver);
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
         }
 
         public MainPage ClickButtonFind()
         {
-            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
+            //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
             actions.MoveToElement(buttonFind).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonFind)).Click();
             //buttonFind.Click();
@@ -138,7 +140,8 @@ namespace Framework.PageObject
 
         public MainPage EnableOrDisableCheckBoxAge()
         {
-            actions.MoveToElement(checkboxAge).Build().Perform();
+            //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
+            actions.MoveToElement(buttonFind).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(checkboxAge)).Click();
             //checkboxAge.Click();
             return this;
@@ -146,6 +149,10 @@ namespace Framework.PageObject
 
         public MainPage InputDriverAge(string age)
         {
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeSelected(inputBoxDriverAge));
+            inputBoxDriverAge.Clear();
+            Thread.Sleep(5000);
             inputBoxDriverAge.SendKeys(age);
             return this;
         }
@@ -162,7 +169,7 @@ namespace Framework.PageObject
 
         public MainPage ClickContactUs()
         {
-            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
+            //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
             actions.MoveToElement(linkContactUs).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(linkContactUs)).Click();
             //linkContactUs.Click();

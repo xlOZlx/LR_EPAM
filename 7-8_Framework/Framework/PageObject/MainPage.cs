@@ -147,6 +147,7 @@ namespace Framework.PageObject
 
         public MainPage SelectReturnDate()
         {
+            Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(chooseReturnDate)).Click();
             return this;
         }

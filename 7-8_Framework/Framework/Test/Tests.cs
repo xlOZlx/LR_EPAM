@@ -49,6 +49,7 @@ namespace Framework.Test
                 .OpenCalenderReceivingDate()
                 .SelectReceivingAndReturnDate()
                 .OpenCalenderReturnDate()
+                .OpenCalenderReturnDate()
                 .SelectReceivingAndReturnDate()
                 .SelectReturnTime()
                 .ClickButtonFind();
@@ -120,6 +121,7 @@ namespace Framework.Test
             carPage.OpenListAdditionalServices()
                 .ChoiseCountSeatForBaby();
             string nameAddService = carPage.ReturnNameAdditionalService();
+            string correctAddServ = carPage.ReturnNameAdditionalService();
             carPage.ClickButtonRemovePolicy();
             CarPage carPageData = new CarPage(Driver).SendkeysDataCustomer(normalDataCreater.Contact,
                                                                            normalDataCreater.FirstName,
@@ -127,8 +129,7 @@ namespace Framework.Test
                                                                            normalDataCreater.MailAdress,
                                                                            normalDataCreater.MobilePhone)
                 .ClickButtonReserve();
-            CarPage carPageCorrectData = new CarPage(Driver);
-            Assert.AreEqual(nameAddService, carPageCorrectData.ReturnCorrectAdditionalService());
+            Assert.AreEqual(nameAddService, correctAddServ);
         }
 
         [Test]

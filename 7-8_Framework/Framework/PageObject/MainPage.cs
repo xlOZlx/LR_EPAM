@@ -47,7 +47,7 @@ namespace Framework.PageObject
         [FindsBy(How = How.Id, Using = "doHour")]
         private IWebElement timeReturn;
 
-        [FindsBy(How = How.CssSelector, Using = "#dateselect-calendar > div > table > tbody > tr:nth-child(5) > td:nth-child(6) > a")]
+        [FindsBy(How = How.CssSelector, Using = "#dateselect-calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > a")]
         private IWebElement choiseDate;
 
         [FindsBy(How = How.Id, Using = "driver-over-min-age")]
@@ -69,6 +69,7 @@ namespace Framework.PageObject
 
         public MainPage ClickButtonFind()
         {
+            Thread.Sleep(1000);
             //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
             actions.MoveToElement(buttonFind).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonFind)).Click();
@@ -102,7 +103,7 @@ namespace Framework.PageObject
 
         public MainPage OpenCalenderReceivingDate()
         {
-            actions.MoveToElement(calendarReceivingDate).Build().Perform();
+            actions.MoveToElement(buttonFind).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReceivingDate)).Click();
             //calendarReceivingDate.Click();
             return this;
@@ -110,7 +111,7 @@ namespace Framework.PageObject
 
         public MainPage OpenCalenderReturnDate()
         {
-            actions.MoveToElement(calendarReturnDate).Build().Perform();
+            Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReturnDate)).Click();
             //calendarReturnDate.Click();
             return this;
@@ -118,6 +119,7 @@ namespace Framework.PageObject
 
         public MainPage SelectReceivingAndReturnDate()
         {
+            Thread.Sleep(1000);
             actions.MoveToElement(choiseDate).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDate)).Click();
             //choiseDate.Click();
@@ -132,7 +134,7 @@ namespace Framework.PageObject
 
         public MainPage SelectReturnDate()
         {
-            actions.MoveToElement(chooseReturnDate).Build().Perform();
+            Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(chooseReturnDate)).Click();
             //chooseReturnDate.Click();
             return this;
@@ -149,10 +151,8 @@ namespace Framework.PageObject
 
         public MainPage InputDriverAge(string age)
         {
-            Thread.Sleep(1000);
-            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeSelected(inputBoxDriverAge));
             inputBoxDriverAge.Clear();
-            Thread.Sleep(5000);
+            Thread.Sleep(1000);
             inputBoxDriverAge.SendKeys(age);
             return this;
         }

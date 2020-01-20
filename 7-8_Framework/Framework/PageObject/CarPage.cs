@@ -28,13 +28,13 @@ namespace Framework.PageObject
         [FindsBy(How = How.CssSelector, Using = "#errorTop > p")]
         private IWebElement errorMesseg;
 
-        [FindsBy(How = How.CssSelector, Using = "div > div.extra-choice-extras > p:nth-child(1) > label > strong")]
+        [FindsBy(How = How.CssSelector, Using = "div > ul > li:nth-child(9) > div > div.extra-choice-extras > p:nth-child(1) > label > strong")]
         private IWebElement nameAdditionalService;
 
         [FindsBy(How = How.Id, Using = "11558698888010")]
         private IWebElement selectCountSeatForBaby;
 
-        [FindsBy(How = How.Id, Using = "Title")]
+        [FindsBy(How = How.Id, Using = "title")]
         private IWebElement contacteCustomer;
 
         [FindsBy(How = How.Id, Using = "f_name_input")]
@@ -111,7 +111,8 @@ namespace Framework.PageObject
 
         public string ReturnCorrectAdditionalService()
         {
-            return correctNameAdditionalService.Text;
+            string correctAdditional = nameAdditionalService.Text;
+            return correctAdditional;
         }
     }
 }

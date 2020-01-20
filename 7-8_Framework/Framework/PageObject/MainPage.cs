@@ -48,7 +48,13 @@ namespace Framework.PageObject
         private IWebElement timeReturn;
 
         [FindsBy(How = How.CssSelector, Using = "#dateselect-calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > a")]
-        private IWebElement choiseDate;
+        private IWebElement choiseDateReceiving;
+
+        [FindsBy(How = How.CssSelector, Using = "#dateselect-calendar > div > table > tbody > tr:nth-child(4) > td:nth-child(5) > a")]
+        private IWebElement choiseDateLeft;
+
+        [FindsBy(How = How.CssSelector, Using = "#dateselect-calendar > div > table > tbody > tr:nth-child(4) > td.ui-datepicker-days-cell-over.first.ui-datepicker-current-day")]
+        private IWebElement choiseDateReturn;
 
         [FindsBy(How = How.Id, Using = "driver-over-min-age")]
         private IWebElement checkboxAge;
@@ -70,10 +76,8 @@ namespace Framework.PageObject
         public MainPage ClickButtonFind()
         {
             Thread.Sleep(1000);
-            //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
-            actions.MoveToElement(buttonFind).Build().Perform();
+            actions.MoveToElement(buttonFind);
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonFind)).Click();
-            //buttonFind.Click();
             return this;
         }
 
@@ -103,26 +107,35 @@ namespace Framework.PageObject
 
         public MainPage OpenCalenderReceivingDate()
         {
-            actions.MoveToElement(buttonFind).Build().Perform();
+            actions.MoveToElement(calendarReceivingDate).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReceivingDate)).Click();
-            //calendarReceivingDate.Click();
             return this;
         }
 
         public MainPage OpenCalenderReturnDate()
         {
-            Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(calendarReturnDate)).Click();
-            //calendarReturnDate.Click();
             return this;
         }
 
-        public MainPage SelectReceivingAndReturnDate()
+        public MainPage SelectDateReceiving()
         {
-            Thread.Sleep(1000);
-            actions.MoveToElement(choiseDate).Build().Perform();
-            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDate)).Click();
-            //choiseDate.Click();
+            actions.MoveToElement(choiseDateReceiving).Build().Perform();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDateReceiving)).Click();
+            return this;
+        }
+
+        public MainPage SelectDateReturn()
+        {
+            actions.MoveToElement(choiseDateReturn).Build().Perform();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDateReturn)).Click();
+            return this;
+        }
+
+        public MainPage SelectDateLeft()
+        {
+            actions.MoveToElement(choiseDateLeft).Build().Perform();
+            new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(choiseDateLeft)).Click();
             return this;
         }
 
@@ -134,18 +147,14 @@ namespace Framework.PageObject
 
         public MainPage SelectReturnDate()
         {
-            Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(chooseReturnDate)).Click();
-            //chooseReturnDate.Click();
             return this;
         }
 
         public MainPage EnableOrDisableCheckBoxAge()
         {
-            //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
             actions.MoveToElement(buttonFind).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(checkboxAge)).Click();
-            //checkboxAge.Click();
             return this;
         }
 
@@ -169,10 +178,8 @@ namespace Framework.PageObject
 
         public MainPage ClickContactUs()
         {
-            //new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(buttonOK)).Click();
             actions.MoveToElement(linkContactUs).Build().Perform();
             new WebDriverWait(driver, TimeSpan.FromMilliseconds(10)).Until(ExpectedConditions.ElementToBeClickable(linkContactUs)).Click();
-            //linkContactUs.Click();
             return this;
         }
     }

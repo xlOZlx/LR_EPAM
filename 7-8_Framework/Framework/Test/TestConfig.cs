@@ -5,7 +5,6 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using Framework.PageObject;
-using Framework.Driver;
 using NUnit.Framework.Interfaces;
 using log4net;
 using log4net.Config;

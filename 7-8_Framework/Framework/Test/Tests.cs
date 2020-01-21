@@ -48,7 +48,7 @@ namespace Framework.Test
                 .SelectLocation_MNA()
                 .OpenCalenderReceivingDate()
                 .SelectDateReceiving()
-                .SelectDateLeft().OpenCalenderReturnDate().OpenCalenderReturnDate()
+                .SelectDateReturn()
                 .SelectReturnTime()
                 .ClickButtonFind();
             //string errorMesseg = mainPage.GetAlertText();

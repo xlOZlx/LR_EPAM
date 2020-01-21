@@ -67,6 +67,7 @@ namespace Framework.PageObject
 
         public MainPage(IWebDriver driver)
         {
+            Thread.Sleep(1000);
             PageFactory.InitElements(driver, this);
             this.driver = driver;
             actions = new Actions(this.driver);
